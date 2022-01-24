@@ -129,12 +129,83 @@ public class EmployeeFactoryImpl implements EmployeeFactory {
 
 `includeSetupPageInto(new PageContent)`보다 `includeSetupPage()`가 이해하기 더 쉽다.
 
-#### 많이 쓰는 단항 형식
+만약, 인수가 여러개이고 테스트 케이스를 작성한다고 가정하자. 각 인수의 조합으로 함수를 검증해야 하므로 굉장히 번거로워진다.
+
+### 많이 쓰는 단항 형식
+
+### 플래그 인수
+
+### 이항 함수
+
+### 삼항 함수
+
+### 인수객체
+
+> 인수가 2-3개 필요하다면 클래스 변수로 선언할 것을 고려한다
+
+```java
+Circle makeCircle(double x, double y, double radius);
+Circle makeCircle(Point center, double radius);
+```
+
+### 인수 목록
+
+**인수 개수가 가변적인 함수**도 필요하다.
+
+```java
+String.format("%s worked %.2f" hours.", name, hours");
+```
+
+가변 인수 전부를 동등하게 취급하면 <u>List 형 인수 하나로 취급할 수 있다</u>. 
+
+즉, String.format은 2개의 인수를 받는 `이항 함수`이다.
+
+```java
+public String format(String format, Object... args)
+```
+
+가변 인수를 취하는 모든 함수에 같은 원리가 적용된다.
+
+### 동사와 키워드
+
+```java
+write(name);
+writeField(name); // 이름(name)이 필드(field)라는 사실이 분명히 드러남
+```
+
+단항 함수는 함수와 인수가 동사/명사 쌍을 이뤄야 한다.
 
 
 
-#### 플래그 인수
+```java
+assertEquals(expected, actual);
+assertExpectedEqualsActual(expected, actual); // 함수 이름에 인수 이름이 있기에 인수 순서를 기억할 필요가 없어진다
+```
 
+함수 이름에 키워드를 추가하는 형식
 
+## 부수 효과를 일으키지 마라
 
-#### 이항 함수
+```java
+// UserValidator.java
+public class UserValidator {
+    private Cryptographer cryptographer;
+    
+    public boolean checkPassword(String userName, String password) {
+        User user = UserGateway.findByName(userName);
+        if (user != User.NULL) {
+            String codedPhrase = user.getPhraseEncodedByPassword();
+            String phrase = cryptographer.decrypt(codedPhrase, password);
+            if ("Valid Password".equals(phrase)) {
+                Session.initialize();
+                return true;
+            }
+        }
+        return false;
+    }
+}
+```
+
+`userName`과 `password`를 확인하고 두 인수가 올바르면 true를 아니면 false를 반환하는 함수다.
+
+하지만, 함수는 부수 효과를 일으킨다.
