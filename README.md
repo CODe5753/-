@@ -1,9 +1,7 @@
-# CleanCode
-클린코드 스터디
+- 나는 코드를 잘 작성하고 있을까?
+- 이렇게 쓰는게 맞나? 더 좋은 방법은 없을까?
+- 코드를 읽기가 왜이리 힘들지? 뭐가 문제일까?
 
-# 진행 방식
-- 주에 2챕터 씩 진행 예정
-- 매 주 메인 발표자 역할을 하며, 발표 진행(형식은 자유)
-- 발표자 이외의 사람들은 이슈를 통해 질문 및 개별적으로 내용 정리를 함
-- [진행 스케줄](https://github.com/Well-Founded-Confidence/CleanCode/issues/1)
-- [스터디 규칙](https://github.com/Well-Founded-Confidence/CleanCode/issues/2)
+위와 같은 고민을 하다 접하게 된 `CleanCode`를 읽고, 내용을 정리하고 있습니다.
+
+다른 개발자와 경험 공유를 하기 위해 [클린코드 스터디](https://github.com/Well-Founded-Confidence/CleanCode)를 개설하여 매 주 1회씩 스터디를 진행하고 있습니다.
