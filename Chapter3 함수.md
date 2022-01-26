@@ -304,7 +304,7 @@ try{	// try-catch로 예외를 사용하는 방법
 > try/catch 블록을 별도 함수로 뽑아내자
 
 ```java
-public void delete(Page page) { // 오류를 처리하는 함수
+public void delete(Page page) { // 모든 오류를 처리하는 함수
     try {
         deletePageAndAllReferences(page);
     }catch (Exception e){
@@ -314,9 +314,36 @@ public void delete(Page page) { // 오류를 처리하는 함수
 
 private void deletePageAndAllReferences(Page page) throws Exception { // 기능을 수행하는 함수
     deletePage(page);
-    ...
+	registry.deleteReference(page.name);
+    configKeys.deleteKey(page.name.makeKey());
 }
 ```
 
-### 오류 처리도 한 가지 작업이다
+### Error.java 의존성 자석
+
+> Error 대신 Exception을 사용하자
+
+## 반복하지 마라!
+
+> AOP(Aspect Oriented Programming), COP(Component Oriented Programming)처럼 중복 제거 전략을 사용하자
+
+## 구조적 프로그래밍
+
+- <u>함수가 크다면</u> 루프 안에서 break나 continue를 사용해선 안 된다.
+- goto 문은 큰 함수에서만 의미가 있으므로 피하자
+
+## 함수를 짜는 과정
+
+- 처음에는 길고 복잡하다
+- 단위 테스트 케이스를 만든다
+- 다음을 수행한다
+  - 코드를 다듬는다
+  - 함수를 만든다
+  - 이름을 바꾼다
+  - 중복을 제거한다
+  - 메서드를 줄이고 순서를 바꾼다
+  - 때로는 전체 클래스를 쪼개기도 한다
+- 위 단계를 거치는 와중에도 항상 단위 테스트를 통과한다
+
+
 
