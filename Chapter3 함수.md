@@ -159,9 +159,32 @@ public class EmployeeFactoryImpl implements EmployeeFactory {
 
 ### 많이 쓰는 단항 형식
 
+- 인수에 질문을 던지는 경우
+- 인수를 뭔가로 변환해 결과를 반환하는 경우
+
+```java
+fileExists("MyFile"); // 첫번째 경우
+InputStream fileOpen("MyFile"); // 두번째 경우, String 형의 파일 이름을 InputStream으로 변환
+```
+
 ### 플래그 인수
 
 ### 이항 함수
+
+x,y 좌표 같은 경우 이항 함수가 적절할 수 있다.
+
+```java
+Point p = new Point(1,2);
+```
+
+반면 아래의 경우 이항 함수보다 단항 함수가 더 깔끔하다.
+
+```java
+writeField(name);
+writeField(outputStream, name);
+```
+
+
 
 ### 삼항 함수
 
