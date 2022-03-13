@@ -5,3 +5,5 @@
 위와 같은 고민을 하다 접하게 된 `CleanCode`를 읽고, 내용을 정리하고 있습니다.
 
 다른 개발자와 경험 공유를 하기 위해 [클린코드 스터디](https://github.com/Well-Founded-Confidence/CleanCode)를 개설하여 매 주 1회씩 스터디를 진행하고 있습니다.
+
+- [클린코드 후기](https://imksh.com/100)
